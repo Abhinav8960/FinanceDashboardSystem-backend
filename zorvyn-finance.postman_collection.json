@@ -1,0 +1,260 @@
+{
+    "info": {
+        "name": "Zorvyn Finance API",
+        "_postman_id": "12345-abcd-6789-efgh",
+        "description": "API Collection for Zorvyn Finance App",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/register",
+                            "host": ["{{base_url}}"],
+                            "path": ["register"]
+                        }
+                    }
+                },
+                {
+                    "name": "Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"email\": \"test@example.com\",\n  \"password\": \"123456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/login",
+                            "host": ["{{base_url}}"],
+                            "path": ["login"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Dashboard",
+            "item": [
+                {
+                    "name": "Get Dashboard",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            },
+                            { "key": "Accept", "value": "application/json" }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/dashboard",
+                            "host": ["{{base_url}}"],
+                            "path": ["dashboard"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Financial Records",
+            "item": [
+                {
+                    "name": "Get All",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/financial-records",
+                            "host": ["{{base_url}}"],
+                            "path": ["financial-records"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Single",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/financial-records/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["financial-records", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Create (Admin)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 1,\n  \"category_id\": 1,\n  \"amount\": 5000,\n  \"type\": \"income\",\n  \"date\": \"2026-04-05\",\n  \"description\": \"Salary\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/financial-records",
+                            "host": ["{{base_url}}"],
+                            "path": ["financial-records"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update (Admin)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"user_id\": 1,\n  \"category_id\": 1,\n  \"amount\": 4000,\n  \"type\": \"expense\",\n  \"date\": \"2026-04-05\",\n  \"description\": \"Groceries\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/financial-records/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["financial-records", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete (Admin)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/financial-records/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["financial-records", "1"]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Users (Admin)",
+            "item": [
+                {
+                    "name": "Get Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/user-management",
+                            "host": ["{{base_url}}"],
+                            "path": ["user-management"]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Single User",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/user-management/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["user-management", "1"]
+                        }
+                    }
+                },
+                {
+                    "name": "Update User",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{token}}"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"name\": \"Updated Name\",\n  \"email\": \"updated@example.com\",\n  \"status\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/user-management/1",
+                            "host": ["{{base_url}}"],
+                            "path": ["user-management", "1"]
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8001/api"
+        },
+        {
+            "key": "token",
+            "value": ""
+        }
+    ]
+}
