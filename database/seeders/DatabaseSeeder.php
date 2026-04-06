@@ -24,9 +24,13 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
+        \App\Models\User::factory(30)->create();
+
         $this->call([
             CategorySeeder::class,
             AdminSeeder::class,
         ]);
+
+        \App\Models\FinancialRecord::factory(30)->create();
     }
 }
