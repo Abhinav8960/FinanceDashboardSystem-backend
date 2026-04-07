@@ -19,11 +19,11 @@ class FinancialRecordFactory extends Factory
     {
         return [
             'user_id' => \App\Models\User::inRandomOrder()->first()->id,
-            'amount' => $this->faker->numberBetween(100, 5000),
-            'type' => $this->faker->randomElement(['income', 'expense']),
+            'amount' => fake()->numberBetween(100, 5000),
+            'type' => fake()->randomElement(['income', 'expense']),
             'category_id' => \App\Models\Category::inRandomOrder()->first()->id,
-            'description' => $this->faker->sentence(),
-            'date' => $this->faker->date(),
+            'description' => fake()->sentence(),
+            'date' => fake()->date(),
         ];
     }
 }
