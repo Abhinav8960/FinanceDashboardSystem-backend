@@ -64,6 +64,14 @@ class AuthController extends Controller
         if (Auth::attempt(["email" => $request->email, "password" => $request->password])) {
 
             $user = User::find(Auth::user()->id);
+
+            if ($user->status != 1) {
+                return response()->json([
+                    'status' => 403,
+                    'message' => 'User is inactive'
+                ], 403);
+            }
+
             $token = $user->createToken('api-token')->plainTextToken;
 
             return response()->json([
